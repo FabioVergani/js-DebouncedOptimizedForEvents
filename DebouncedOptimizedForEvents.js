@@ -1,4 +1,9 @@
 (w=>{
- const Tset=w.setTimeout,Tclear=w.clearTimeout,debounced=(f,n=300)=>{let e=null;return x=>{if(null===e){e=Tset(()=>{f(x);Tclear(e);e=null},n)}}};
-
-})(window);
+	const console=w.console,
+	debounced=(f,n=300)=>{const a=w.setTimeout,b=w.clearTimeout;let e;return x=>{b(e),e=a(()=>{f(x)},n)}};
+	//
+	w.addEventListener('resize',debounced(event=>{
+		console.info('resize:%O',event)
+	}));
+	//
+})(window)
